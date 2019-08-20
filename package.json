@@ -1,0 +1,24 @@
+{
+  "name": "tiblmi_awscw_windows",
+  "version": "1.0.0",
+  "description": "TIBCO LogLogic Windows Events Forwarder for AWS CloudWatch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Laurent Pautet",
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "dependencies": {
+    "ip": "^1.1.5",
+    "moment": "",
+    "xml2js": ""
+  },
+  "devDependencies": {},
+  "keywords": [
+    "uldp",
+    "loglogic",
+    "aws",
+    "CloudWatch",
+    "TIBCO"
+  ]
+}
