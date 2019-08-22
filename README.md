@@ -1,6 +1,6 @@
 # Collecting Windows logs for AWS EC2 instances using CloudWatch agent
 
-This repository contains all the elements to collect Windows event logs from AWS EC2 instances, and forward them to an LMI instance, through the use of Cloud Watch and Lambda functions.
+This repository contains the elements to collect Microsoft Windows event logs from Amazon Webs Services (AWS) EC2 instances and forward them to an instance of TIBCO LogLogic® Log Management Intelligence (LMI), through the use of Amazon Cloud Watch and AWS Lambda functions.
 
 ## Requirements
 
