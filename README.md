@@ -110,3 +110,18 @@ Select the lambda function to use, then next
 LogFormat: other, then next
 
 Start streaming
+
+# TLS support
+
+To enable secure TLS with the Lambda functions, in addition to the regular settings, you need to put a file named tls_options.json in the Lambda function directory or ZIP file.
+This file should have the following content:
+```
+{
+"ca": "<base 64 encoding of the CA certificate PEM file>",
+"cert": "<base 64 encoding of the client certificate PEM file>",
+"key": "<base 64 encoding of the client certificate key PEM file>",
+"passphrase": "<passphrase for opening the key file>",
+"noCheckServerIdentity": <true or fale>
+}
+```
+The presence of a well formatted file automatically enables TLS mode.

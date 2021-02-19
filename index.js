@@ -35,10 +35,45 @@ const debug_uldp = process.env.DEBUG_ULDP === 'true';
 const defaultSrcIP = process.env.SOURCE_IP === undefined ? '0.0.0.0' :
         process.env.SOURCE_IP === 'auto' ? null : process.env.SOURCE_IP;
 
+function readTlsOptions() {
+    var tls_options
+    try {
+        tls_options = require("./tls_options.json")
+    } catch (e) {
+        if (debug) {
+            console.log("File tls_options.json cannot be loaded")
+        }
+        return null
+    }
+    if (! tls_options["ca"]) {
+        throw Error("Missing ca parameter in tls_options.js")
+    }
+    tls_options["ca"] = (new Buffer(tls_options["ca"], 'base64')).toString('ascii');
+    if ( !tls_options["cert"]) {
+        throw Error("Missing cert parameter in tls_options.js")
+    }
+    tls_options["cert"] = (new Buffer(tls_options["cert"], 'base64')).toString('ascii');
+    if ( !tls_options["key"]) {
+        throw Error("Missing key parameter in tls_options.js")
+    }
+    tls_options["key"] = (new Buffer(tls_options["key"], 'base64')).toString('ascii');
+    return tls_options
+}
+const tlsOptions = readTlsOptions()
+
 // entry point
 exports.handler = async (event, context) => {
     if (debug) {
         console.log('Receive event: ' + JSON.stringify(event));
+    }
+    if (tlsOptions ) {
+        uldpConfig.tlsOptions = tlsOptions
+        if (uldpConfig.port === undefined) {
+            uldpConfig.port = 5515
+        }
+        console.log('Connecting to LMI ' + uldpConfig.host + " with TLS");
+    } else {
+        console.log('Connecting to LMI ' + uldpConfig.host);
     }
     const uldpSender = new uldp(uldpConfig);
     if (debug_uldp) {
