@@ -121,7 +121,7 @@ This file should have the following content:
 "cert": "<base 64 encoding of the client certificate PEM file>",
 "key": "<base 64 encoding of the client certificate key PEM file>",
 "passphrase": "<passphrase for opening the key file>",
-"noCheckServerIdentity": <true or fale>
+"noCheckServerIdentity": <true or false>
 }
 ```
 The presence of a well formatted file automatically enables TLS mode.
