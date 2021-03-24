@@ -39,6 +39,8 @@ On a server running Windows Server, open PowerShell, change to the directory con
 
 #### Configure CloudWatch agent
 
+Warning: this lambda function expects the Windows log format chosen to be XML.
+
 ##### Option 1: Configuration using Wizard
 
 ```
